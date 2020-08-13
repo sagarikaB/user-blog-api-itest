@@ -1,9 +1,9 @@
 package com.mobiquity.userblogapitest.stepdefinitions;
 
 import com.mobiquity.userblogapitest.model.User;
-import io.cucumber.java.Before;
+import com.mobiquity.userblogapitest.UserState;
 import io.cucumber.java.en.Given;
-import io.restassured.RestAssured;
+import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpStatus;
 
 import java.util.Arrays;
@@ -12,13 +12,10 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserBlogStepDefinitions {
+@RequiredArgsConstructor
+public class UserStepDefinitions {
 
-    @Before
-    public void setup() {
-        RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
-        RestAssured.port = 443;
-    }
+    private final UserState userState;
 
     @Given("user {string} is available")
     public void user_available(String username) {
@@ -31,7 +28,9 @@ public class UserBlogStepDefinitions {
                 .as(User[].class);
         List<User> userList = Arrays.asList(users);
 
-        assertThat(userList).isNotEmpty();
+        assertThat(userList).hasSize(1);
         assertThat(userList).extracting(User::getUsername).contains(username);
+
+        userState.setUserId(userList.get(0).getId());
     }
 }

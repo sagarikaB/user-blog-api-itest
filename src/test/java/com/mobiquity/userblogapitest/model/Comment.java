@@ -5,11 +5,10 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class Comment {
+    private Long postId;
     private Long id;
     private String name;
-    private String username;
     private String email;
-    private String phone;
-    private String website;
+    private String body;
 }
