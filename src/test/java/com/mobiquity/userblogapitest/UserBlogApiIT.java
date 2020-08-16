@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = {"com.mobiquity.userblogapitest.stepdefinitions"},
         features = "classpath:features",
-        plugin = {"pretty", "html:build/cucumber"})
+        plugin = {"pretty","html:build/cucumber", "junit:target/cucumber/cucumber.junit"})
 public class UserBlogApiIT {
 }
 
