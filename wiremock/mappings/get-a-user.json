@@ -4,7 +4,7 @@
     "urlPath": "/users",
     "queryParameters" : {
       "username" : {
-        "matches" : "([A-Za-z]+)"
+        "matches" : "([A-Za-z]){1,10}"
       }
     }
   },
