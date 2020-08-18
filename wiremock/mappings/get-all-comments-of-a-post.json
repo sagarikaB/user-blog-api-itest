@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/posts/(\\d+)/comments"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "comments-of-a-post.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

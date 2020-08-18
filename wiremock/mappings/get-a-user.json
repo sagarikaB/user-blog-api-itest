@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/users",
+    "queryParameters" : {
+      "username" : {
+        "matches" : "([A-Za-z]+)"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "a-user.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

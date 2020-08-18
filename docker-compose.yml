@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  user_blog_wiremock:
+    image: rodolpheche/wiremock:latest
+    container_name: user_blog_wiremock
+    ports:
+      - 8080:8080
+      - 8443:8443
+    environment:
+      - WIREMOCK_VERSION=2.27.1
+    volumes:
+      - ./wiremock/files:/home/wiremock/__files
+      - ./wiremock/mappings:/home/wiremock/mappings
