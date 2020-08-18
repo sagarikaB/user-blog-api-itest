@@ -8,3 +8,8 @@ workflows:
     jobs:
       - maven/test: # checkout, build, test, and upload test results
           test_results_path: target/cucumber
+  build:
+    steps:
+    # ... steps for building/testing app ...
+
+      - setup_remote_docker
