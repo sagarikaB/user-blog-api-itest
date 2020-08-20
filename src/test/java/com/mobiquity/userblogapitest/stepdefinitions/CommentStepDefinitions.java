@@ -1,5 +1,6 @@
 package com.mobiquity.userblogapitest.stepdefinitions;
 
+import com.mobiquity.userblogapitest.ResponseState;
 import com.mobiquity.userblogapitest.UserState;
 import com.mobiquity.userblogapitest.model.Comment;
 import io.cucumber.java.en.And;
@@ -15,12 +16,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.regex.Pattern;
 
 import static io.restassured.RestAssured.given;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RequiredArgsConstructor
 public class CommentStepDefinitions {
     private final UserState userState;
+    private final ResponseState responseState;
+
 
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private Condition<String> validEmail = new Condition<>(email -> VALID_EMAIL_ADDRESS_REGEX.matcher(email).matches(), "check email validity");
@@ -55,5 +58,4 @@ public class CommentStepDefinitions {
             return Arrays.asList(comments);
         });
     }
-
 }

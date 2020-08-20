@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/posts",
+    "queryParameters" : {
+      "username" : {
+        "matches" : "([A-Za-z]){1,}"
+      }
+    }
+  },
+  "response": {
+    "status": 400
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "DELETE",
+    "urlPath": "/users",
+    "queryParameters" : {
+      "userid" : {
+        "matches" : "([0-9]){1,}"
+      }
+    }
+  },
+  "response": {
+    "status": 401
+  }
+}

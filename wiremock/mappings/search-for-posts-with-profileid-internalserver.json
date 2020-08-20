@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/posts",
+    "queryParameters" : {
+      "profileid" : {
+        "matches" : "([0-9]){1,5}"
+      }
+    }
+  },
+  "response": {
+    "status": 500
+  }
+}

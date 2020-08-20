@@ -1,12 +1,12 @@
 package com.mobiquity.userblogapitest.stepdefinitions;
 
 import com.mobiquity.userblogapitest.ResponseState;
-import com.mobiquity.userblogapitest.model.User;
 import com.mobiquity.userblogapitest.UserState;
+import com.mobiquity.userblogapitest.model.User;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpStatus;
 
@@ -53,4 +53,20 @@ public class UserStepDefinitions {
         assertThat(response.getStatusCode()).isEqualTo(statusCode);
     }
 
+    @When("search for profileid {string}")
+    public void search_for_Profileid(String profileid) {
+            Response response = given().queryParam("profileid", profileid)
+                    .when()
+                    .get("/posts");
+            responseState.setResponse(response);
+    }
+
+    @When("try to delete user {string}")
+    public void tryToDeleteUser(String userid) {
+        Response response = given().queryParam("userid", userid)
+                .when()
+                .delete("/users");
+        responseState.setResponse(response);
+
+    }
 }
