@@ -1,14 +1,17 @@
 version: 2.1
 
 orbs:
-  maven: circleci/maven@0.0.12
+  docker: circleci/docker@0.0.12
+  maven: circleci/maven@1.4.0
 
 workflows:
+  build-docker-image-only:
+    jobs:
+      - docker/publish:
+          image: sagarikaB/user-blog-api-itest
+          update-description: true
   maven_test:
     jobs:
-      - maven/test: # checkout, build, test, and upload test results
-          test_results_path: target/cucumber
-      build:
-        steps:
-    # ... steps for building/testing app ...
-          - setup_remote_docker
+      - maven/test:
+        test_results_path: target/cucumber
+
